@@ -1,0 +1,24 @@
+# Loguard configuration example
+# Copy this to /etc/loguard/config.toml
+
+# Required: Telegram Bot Token (from @BotFather)
+bot_token = "YOUR_BOT_TOKEN_HERE"
+
+# Required: Telegram Chat ID (from @userinfobot)
+chat_id = "YOUR_CHAT_ID_HERE"
+
+# Optional: Custom hostname shown in alerts
+# Default: system hostname
+hostname = "my-server"
+
+# Optional: OS info shown in alerts
+# Default: detected from /etc/os-release
+os_info = "Ubuntu 24.04 LTS"
+
+# Heartbeat interval in minutes (0 = disabled)
+# Default: 15
+heartbeat_minutes = 15
+
+# Automatically restore PAM hook if tampered
+# Default: true
+self_heal_pam = true
