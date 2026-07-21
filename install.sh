@@ -23,7 +23,7 @@
 
 set -euo pipefail
 
-REPO="OWNER/loguard"          # set to your actual GitHub owner/repo
+REPO="Nowafen/Loguard"          # set to your actual GitHub owner/repo
 BRANCH="main"
 CLEANUP_DIRS=()
 
