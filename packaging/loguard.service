@@ -1,0 +1,16 @@
+[Unit]
+Description=Loguard Login Alert Daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/loguard/bin/loguard daemon
+Restart=on-failure
+RestartSec=10
+User=root
+Group=root
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

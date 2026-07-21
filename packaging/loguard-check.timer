@@ -1,0 +1,10 @@
+[Unit]
+Description=Loguard Watchdog Timer
+Requires=loguard.service
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+
+[Install]
+WantedBy=timers.target

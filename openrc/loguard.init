@@ -1,0 +1,31 @@
+#!/sbin/openrc-run
+
+name="loguard"
+description="Loguard Login Alert Daemon"
+
+command="/opt/loguard/bin/loguard"
+command_args="daemon"
+command_user="root"
+pidfile="/run/loguard/loguard.pid"
+
+depend() {
+    need net
+    after firewall
+}
+
+start_pre() {
+    mkdir -p /run/loguard
+    chmod 0755 /run/loguard
+}
+
+stop() {
+    if [ -f "${pidfile}" ]; then
+        local pid=$(cat "${pidfile}")
+        if [ -n "${pid}" ]; then
+            kill -TERM "${pid}" 2>/dev/null
+            sleep 2
+            kill -KILL "${pid}" 2>/dev/null || true
+        fi
+    fi
+    rm -f "${pidfile}"
+}

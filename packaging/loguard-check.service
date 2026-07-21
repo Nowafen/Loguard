@@ -1,0 +1,9 @@
+[Unit]
+Description=Loguard Watchdog Check
+After=loguard.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/loguard/bin/loguard check
+User=root
+Group=root
