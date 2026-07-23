@@ -10,7 +10,7 @@ Loguard is a lightweight, security-focused daemon that monitors every login atte
 
 ---
 
-## 🚀 Features
+## Features
 
 - **Instant Login Alerts** – Get notified in real time whenever a user logs in via SSH, console, `su`, `sudo`, or a graphical session.
 - **Tamper‑Resistant** – The daemon regularly verifies its own binary, the PAM hook, and the PAM configuration files. Any modification triggers an immediate alert and optional self‑healing.
@@ -23,7 +23,7 @@ Loguard is a lightweight, security-focused daemon that monitors every login atte
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### One‑line install (recommended)
 
@@ -70,7 +70,7 @@ sudo mkdir -p /etc/loguard /var/lib/loguard /var/log/loguard
 
 ---
 
-## 🔧 Configuration
+## Configuration
 
 Loguard stores its configuration in `/etc/loguard/config.toml` (root‑only readable).
 
@@ -111,7 +111,7 @@ self_heal_pam = true
 
 ---
 
-## 📋 Commands
+## Commands
 
 | Command | Description |
 |---------|-------------|
@@ -132,7 +132,7 @@ self_heal_pam = true
 
 ---
 
-## 🛡️ How It Works
+## How It Works
 
 1. **PAM Hook** (`loguard-notify`) – A tiny C program that is invoked by PAM on every `open_session` event. It reads the current session details (user, service, remote host, TTY), builds a JSON line, and appends it to `/var/lib/loguard/queue.jsonl` with an exclusive lock. It never performs network I/O.
 
@@ -153,28 +153,7 @@ self_heal_pam = true
 
 ---
 
-## 📁 File Locations
-
-| File / Directory | Purpose |
-|------------------|---------|
-| `/opt/loguard/bin/loguard` | Main daemon / CLI binary |
-| `/opt/loguard/bin/loguard-notify` | PAM hook binary |
-| `/usr/local/bin/loguard` | Symlink to the CLI |
-| `/etc/loguard/config.toml` | Configuration file (root‑only) |
-| `/etc/loguard/pam_manifest.list` | List of PAM files that Loguard has modified |
-| `/etc/loguard/integrity.sha256` | Stored SHA‑256 hashes of binaries |
-| `/var/lib/loguard/queue.jsonl` | Pending event queue |
-| `/var/log/loguard/alert.log` | Delivery log (SENT/FAILED entries) |
-| `/var/log/loguard/tamper.log` | Tamper/health alerts |
-| `/run/loguard/loguard.pid` | PID file for the daemon |
-| `/etc/systemd/system/loguard.service` | Systemd service unit |
-| `/etc/systemd/system/loguard-check.service` | Systemd oneshot check service |
-| `/etc/systemd/system/loguard-check.timer` | Systemd timer for the check |
-| `/etc/init.d/loguard` | OpenRC init script (if used) |
-
----
-
-## 🔐 Security Considerations
+## Security Considerations
 
 - **Root privileges** – The daemon runs as root because it needs to modify PAM files and read system logs. The PAM hook also runs as root (PAM context).
 - **No shell injection** – All external commands are executed via `execvp` with an argument vector – never through a shell. This prevents injection of bot tokens, usernames, or hostnames.
@@ -185,7 +164,7 @@ self_heal_pam = true
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Test message fails
 
@@ -210,43 +189,10 @@ Run `sudo loguard restart` to re‑apply the hook. Or run `sudo loguard check` �
 
 If Telegram is unreachable for a long time, the queue will grow. You can clear it with `sudo loguard clear-queue` (after verifying connectivity). The daemon will continue retrying until delivery succeeds or the retry limit is reached.
 
-### Build fails
-
-Ensure you have `g++`, `gcc`, and `make` installed. On Debian/Ubuntu:
-```bash
-sudo apt install build-essential curl
-```
-On Alpine:
-```bash
-sudo apk add g++ gcc make musl-dev curl
-```
-
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a feature branch (`git checkout -b feature/amazing-feature`).
-3. Commit your changes (`git commit -m 'Add some amazing feature'`).
-4. Push to the branch (`git push origin feature/amazing-feature`).
-5. Open a Pull Request.
-
-Please ensure your code follows the existing style and includes appropriate comments.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
-
----
-
-## 📬 Support
-
-- **Issues**: [GitHub Issues](https://github.com/Nowafen/Loguard/issues)
-- **X**: [@Nawid](https://x.com/RedteamElite)
+## Creator
+- **X**: [@Nawid](https://x.com/RedTeamElite)
 
 ---
 
