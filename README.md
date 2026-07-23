@@ -192,7 +192,7 @@ If Telegram is unreachable for a long time, the queue will grow. You can clear i
 ---
 
 ## Creator
-- **X**: [@Nawid](https://x.com/RedTeamElite)
+- **X** : [@Nawid](https://x.com/RedTeamElite)
 
 ---
 
