@@ -5,7 +5,7 @@
 Loguard is a lightweight, security-focused daemon that monitors every login attempt on your Linux system – SSH, console, `su`, `sudo`, and graphical displays – and instantly sends a Telegram notification. It is designed to be resilient against tampering, with self-healing, integrity checks, and a persistent queue that survives network outages and reboots.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Version](https://img.shields.io/badge/version-2.0.0-green.svg)
+![Version](https://img.shields.io/badge/version-0.1.0-green.svg)
 ![Platform](https://img.shields.io/badge/platform-Linux-lightgrey.svg)
 
 ---
